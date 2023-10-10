@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>My Second Web Page</title>
+
+<link rel="stylesheet" href="demo.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <style>
+    #showinfo {
+       background-color:#eee;
+    }
+ </style> -->
+<script>
+   
+        //  $(document).ready(function() {
+        //     $("#btn").click(function(event){
+
+        //        //Add a div element within the body
+        //        $('body').append('<div id="showinfo"></div>');
+
+        //        //Add paragraph elements within the div
+        //        $('#showinfo').append('<p></p>');
+        //        $('#showinfo').append('<p></p>');
+        //        $('#showinfo').append('<p></p>');
+            
+        //        //Load data from json file to each paragraphs
+        //        $.getJSON('data.json', function(jqdata) {
+        //           $('#showinfo p:first-child').append('NAME: ' + jqdata.name);
+        //           $('#showinfo p:nth-child(2)').append('AGE: ' + jqdata.age);
+        //           $('#showinfo p:last-child').append('SEX: ' + jqdata.sex);
+        //        });
+					
+        //     });
+        //  });
+        $(document).ready(function() {
+            $("#btn").click(function(event){
+                // Load data from json file to populate the table
+                $.getJSON('data.json', function(data) {
+                    //populate title of the table
+                    $("caption").each(function(index) {
+                        $(this).text(data["title"]);
+                    });
+                    
+                    //populate heading for rows
+                    $("#showheading th").each(function(index) {
+                        $(this).text(data["heading"]);
+                    });
+
+                    // Populate the table headings
+                    $("#showheading th.items").each(function(index) {
+                        $(this).text(data["head" + (index + 1)]);
+                    });
+
+                      //populate heading for rows
+                      $("#showcalories td").each(function(index) {
+                        $(this).text(data["subheadcal"]);
+                    });
+
+                    // Populate the table rows
+                    $("#showcalories td.cals").each(function(index) {
+                        $(this).text(data["cal" + (index + 1)]);
+                    });
+
+                      //populate heading for rows
+                      $("#showfat td").each(function(index) {
+                        $(this).text(data["subheadfat"]);
+                    });
+                    
+                    // Populate the fat rows
+                    $("#showfat td.cholestrol").each(function(index) {
+                        $(this).text(data["fat" + (index + 1)]);
+                    });
+
+                      //populate heading for rows
+                      $("#showven td").each(function(index) {
+                        $(this).text(data["subheadven"]);
+                    });
+
+                    // Populate the vendor row
+                    $("#showven td.seller").each(function(index) {
+                        $(this).text(data["ven" + (index + 1)]);
+                    });
+                });
+            });
+        });
+
+    
+ </script>
+</head> 	
+<body>
+
+<div id="container">
+
+<header>My Web Site Brand</header>
+<nav>
+	<ul>
+    <li><a href="js-demo2.html">Home</a></li>
+    <li><a href="js-demo2b.html">About</a></li>
+    <li><a href="js-demo2d.html">Gallery</a></li>
+    <li><a href="js-demo2c.html">Contact</a></li>
+	</ul>
+</nav>
+
+<main>
+  <h1>My Second Heading</h1>
+  <p>My Second paragraph.</p>
+
+  <table>
+    <caption></caption>
+    <thead>
+        <tr id="showheading">
+            <th></th>
+            <th class="items"></th>
+            <th class="items"></th>
+            <th class="items"></th>
+            <th class="items"></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr id="showcalories">
+            <td></td>
+            <td class="cals"></td> 
+            <td class="cals"></td>
+            <td class="cals"></td>
+            <td class="cals"></td>
+        </tr>
+        <tr id="showfat">
+            <td></td>
+            <td class="cholestrol"></td> 
+            <td class="cholestrol"></td>
+            <td class="cholestrol"></td>
+            <td class="cholestrol"></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr id="showven">
+            <td></td>
+            <td class="seller"></td>
+            <td class="seller"></td>
+            <td class="seller"></td>
+            <td class="seller"></td>
+        </tr>
+     </tfoot> 
+    </table>
+    <div id = "showinfo">
+    <input type = "button" id = "btn" value = "Load Data" style="margin-top:20px;" />
+    </div>
+</main>
+
+<footer>&copy; Copyright 2020</footer>
+
+</div>
+
+</body>
+</html>
